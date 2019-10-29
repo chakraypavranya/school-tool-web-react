@@ -1,0 +1,12 @@
+/* 
+ This file will have the all Mixins
+ - Author : Pavel Ray   
+*/
+
+@mixin clearfix{
+    &::after{
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
