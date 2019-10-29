@@ -7,13 +7,13 @@ export class Landing extends Component {
         <div className="ui middle aligned center aligned grid">
         <div className="column">
           <h2 className="ui teal image header">
-            <img src="" class="image" />
+            <img src="" className="image" />
             <div className="content">
               Welcome To School Tool
             </div>
           </h2>
          
-          <div class="ui message">
+          <div className="ui message">
             <GoogleBtn/>
           </div>
         </div>

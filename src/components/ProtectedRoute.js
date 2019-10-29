@@ -22,7 +22,6 @@ export class ProtectedRoute extends Component {
 }
 
 const mapStateToProps =(state,ownProps)=>{
-    console.log(ownProps);
     return{isSignedIn : state.auth.isSignedIn}
 }
 
