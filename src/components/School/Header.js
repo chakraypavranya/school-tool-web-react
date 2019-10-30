@@ -7,13 +7,10 @@ import GoogleAuth from '../GoogleAuth';
 export default function Header() {
     return (
         <div className="ui secondary pointing menu">
-            <Link to="/home" className="item">
+            <Link to="/school/home" className="item">
                 School Tool
             </Link>
             <div className="right menu">
-            <Link to="/home" className="item">
-                All Schools
-            </Link>
             <GoogleAuth/>
             </div>
         </div>

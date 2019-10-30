@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {registerSchool} from '../../../redux/actions/school';
 
 export class RegistrationFormSubmit extends Component {
+
+  registerSchool=()=>{
+    this.props.registerSchool(this.props.schoolDetails);
+  }
+
   render() {
     const { title, previousPage, schoolDetails } = this.props;
 
@@ -63,7 +69,7 @@ export class RegistrationFormSubmit extends Component {
         <button type="button" className="ui button secondary" onClick={previousPage}>
           Previous
         </button>
-        <button type="button" className="ui button primary">
+        <button type="button" className="ui button primary" onClick={this.registerSchool}>
           Submit
         </button>
       </div>
@@ -75,4 +81,4 @@ const mapStateToProps = (state)=>{
   return{schoolDetails: state.form.SchoolRegistration.values}
 }
 
-export default connect(mapStateToProps)(RegistrationFormSubmit)
+export default connect(mapStateToProps,{registerSchool})(RegistrationFormSubmit)

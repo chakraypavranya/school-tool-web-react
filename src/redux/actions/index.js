@@ -1,5 +1,5 @@
 import history from '../../history';
-import {SchoolToolApi, getConfig}from '../../apis/SchoolTool';
+import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
 
 import {
     SIGN_IN,
@@ -10,7 +10,8 @@ import {
     ROOT_URL,
     SCHOOL_HOME_URL,
     GURDIAN_HOME_URL,
-    TEACHER_HOME_URL
+    TEACHER_HOME_URL,
+    REGISTER_SCHOOL_URL
 } from '../../resources/urls';
 
 
@@ -18,7 +19,7 @@ export const signIn = (id_token) =>async (dispatch) =>{
     let routeUrl = '/';
 
     try{
-        const response = await SchoolToolApi.get('/account/checkUser', getConfig(id_token));
+        const response = await SchoolToolApi.get('/account/checkUser', getConfigJson(id_token));
         
         dispatch({type: SIGN_IN, payload: response.data.value});
 
@@ -40,12 +41,12 @@ export const signIn = (id_token) =>async (dispatch) =>{
             }
         }
         else{
-            routeUrl = '/school/register';
+            routeUrl = REGISTER_SCHOOL_URL;
         }
     }
     catch (error) {
         if(error.message==='Network Error'){
-            alert('Network Error, Please try after some time.');
+           console.log(error.message);
         }
     }
     history.push(routeUrl);
