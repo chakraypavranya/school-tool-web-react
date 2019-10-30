@@ -24,10 +24,11 @@ const App = () =>{
                 <div>
                     <Switch>
                         <Route path={ROOT_URL} exact component={Landing}/>
+                        <Route path={REGISTER_SCHOOL_URL} exact component={Register}/>
                         <ProtectedRoute path={SCHOOL_HOME_URL} exact component={SchoolHome}/>
                         <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
                         <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>
-                        <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/>
+                        {/* <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/> */}
                     </Switch>
                 </div>
             </Router>

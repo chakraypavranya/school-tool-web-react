@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import RegistrationForm from './Registration/RegistrationForm';
 
 export class Register extends Component {
+
   render() {
     return (
-      <div>
-        Register New School
+      <div className="ui container">
+        <RegistrationForm />
       </div>
     )
   }
