@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-import GoogleBtn from '../GoogleBtn';
+
+import Header from './Header';
 
 export class Landing extends Component {
   render() {
     return (
+      <>
+        <Header/>
         <div className="ui middle aligned center aligned grid">
         <div className="column">
             <div className="content">
-              Welcome To School Tool
+              <h1>Welcome To School Tool</h1>
             </div>
-          <GoogleBtn/>
         </div>
       </div>
+      </>
     )
   }
 }
