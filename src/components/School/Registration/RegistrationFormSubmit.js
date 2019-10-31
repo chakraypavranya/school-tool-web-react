@@ -5,7 +5,7 @@ import {registerSchool} from '../../../redux/actions/school';
 export class RegistrationFormSubmit extends Component {
 
   registerSchool=()=>{
-    this.props.registerSchool(this.props.schoolDetails);
+    this.props.registerSchool(this.props.schoolDetails, this.props.googleUser);
   }
 
   render() {
@@ -78,7 +78,7 @@ export class RegistrationFormSubmit extends Component {
 }
 
 const mapStateToProps = (state)=>{
-  return{schoolDetails: state.form.SchoolRegistration.values}
+  return{schoolDetails: state.form.SchoolRegistration.values, googleUser: state.auth.googleUser}
 }
 
 export default connect(mapStateToProps,{registerSchool})(RegistrationFormSubmit)

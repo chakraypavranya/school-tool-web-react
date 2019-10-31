@@ -22,8 +22,15 @@ export class GoogleAuth extends Component {
 
     onAuthChange = (isSignedIn) =>{
         if(isSignedIn){
-            const id_token = this.auth.currentUser.get().getAuthResponse().id_token;
-            this.props.signIn(id_token);
+            const user = {
+                id_token : this.auth.currentUser.get().getAuthResponse().id_token,
+                firstName: this.auth.currentUser.get().getBasicProfile().getGivenName(),
+                lastName: this.auth.currentUser.get().getBasicProfile().getFamilyName(),
+                image_Url : this.auth.currentUser.get().getBasicProfile().getImageUrl(),
+                id: this.auth.currentUser.get().getBasicProfile().getId(),
+                email: this.auth.currentUser.get().getBasicProfile().getEmail()
+            }
+            this.props.signIn(user);
         }
         else{
             this.props.signOut();

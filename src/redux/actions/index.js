@@ -15,13 +15,13 @@ import {
 } from '../../resources/urls';
 
 
-export const signIn = (id_token) =>async (dispatch) =>{
+export const signIn = (user) =>async (dispatch) =>{
     let routeUrl = '/';
 
     try{
-        const response = await SchoolToolApi.get('/account/checkUser', getConfigJson(id_token));
+        const response = await SchoolToolApi.get('/account/checkUser', getConfigJson(user.id_token));
         
-        dispatch({type: SIGN_IN, payload: response.data.value});
+        dispatch({type: SIGN_IN, payload: {googleUser: user, user: response.data.value}});
 
         if(response.data.value !== null){
             const userRole = response.data.value.userRole;
