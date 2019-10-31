@@ -8,6 +8,7 @@ export class Register extends Component {
     return (
       <div className="ui container">
         <Header/>
+        <h2 className="header">Register Your School</h2>
         <RegistrationForm />
       </div>
     )

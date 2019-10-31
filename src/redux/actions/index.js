@@ -54,7 +54,7 @@ export const signIn = (user) =>async (dispatch) =>{
 
 export const signOut = () =>async (dispatch) =>{
     dispatch({type: SIGN_OUT});
-    history.push('/');
+    history.push('/Login');
 };
 
 

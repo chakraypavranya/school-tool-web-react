@@ -18,23 +18,21 @@ import {
     TEACHER_HOME_URL,
     REGISTER_SCHOOL_URL
 } from '../resources/urls';
+import Login from './Login/Login';
 
 const App = () =>{
     return (
-        <>
-            <Router history={history}>
-                <div>
-                    <Switch>
-                        <Route path={ROOT_URL} exact component={Landing}/>
-                        {/* <Route path={REGISTER_SCHOOL_URL} exact component={Register}/> */}
-                        <ProtectedRoute path={SCHOOL_HOME_URL} exact component={SchoolHome}/>
-                        <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
-                        <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>
-                        <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/>
-                    </Switch>
-                </div>
-            </Router>
-        </>
+        <Router history={history}>
+            <Switch>
+                <Route path={ROOT_URL} exact component={Landing}/>
+                <Route path='/Login' exact component={Login}/>
+                {/* <Route path={REGISTER_SCHOOL_URL} exact component={Register}/> */}
+                <ProtectedRoute path={SCHOOL_HOME_URL} exact component={SchoolHome}/>
+                <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
+                <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>
+                <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/>
+            </Switch>
+        </Router>
     )
 }
 

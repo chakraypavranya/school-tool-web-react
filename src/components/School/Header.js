@@ -1,17 +1,19 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import GoogleBtn from '../GoogleBtn';
+import Avater from '../UI/Avater';
 
-import GoogleAuth from '../GoogleAuth';
 
-
-export default function Header() {
+export default function Header(props) {
+    console.log(props);
     return (
         <div className="ui secondary pointing menu">
             <Link to="/school/home" className="item">
                 School Tool
             </Link>
             <div className="right menu">
-            <GoogleAuth/>
+            <Avater {...props} />
+            <GoogleBtn/>
             </div>
         </div>
     )

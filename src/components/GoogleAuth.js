@@ -3,10 +3,6 @@ import {connect} from 'react-redux';
 import {signIn,signOut} from '../redux/actions';
 
 export class GoogleAuth extends Component {
-    state = {
-        isSignedIn: null
-    }
-
     componentDidMount(){
         window.gapi.load('client:auth2',()=>{
             window.gapi.client.init({
@@ -48,7 +44,11 @@ export class GoogleAuth extends Component {
 
     renderAuthButton(){
         if(this.props.isSignedIn === null){
-            return null;
+            return(
+                <button onClick={this.onSignIn} className="ui red google button">
+                   Sign In Using &nbsp; <i className="google icon"></i>
+                </button>
+            )
         }else if(this.props.isSignedIn){
             return(
                 <button onClick={this.onSignOut} className="ui red google button">
