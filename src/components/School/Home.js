@@ -27,7 +27,7 @@ export class Home extends Component {
         <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
         <div className="ui grid container">
           
-          <div className="twelve wide column calendar">
+          <div className="column calendar">
             <FullCalender
               calendarEvents = {this.props.calendarEvents}
               handleDateClick = {this.handleDateClick}
