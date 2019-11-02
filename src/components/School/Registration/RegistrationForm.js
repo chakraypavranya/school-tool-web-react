@@ -23,7 +23,6 @@ export class RegistrationForm extends Component {
   }
 
   render() {
-    const { onSubmit } = this.props;
     const { page } = this.state;
 
     return (

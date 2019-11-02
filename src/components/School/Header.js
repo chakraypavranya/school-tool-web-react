@@ -5,12 +5,15 @@ import Avater from '../UI/Avater';
 
 
 export default function Header(props) {
-    console.log(props);
     return (
         <div className="ui secondary pointing menu">
             <Link to="/school/home" className="item">
                 School Tool
             </Link>
+            <div class="ui black big launch right attached fixed button">
+                <i class="content icon"></i>
+                <span class="text">Menu</span>
+            </div>
             <div className="right menu">
             <Avater {...props} />
             <GoogleBtn/>

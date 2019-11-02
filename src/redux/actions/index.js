@@ -11,7 +11,8 @@ import {
     SCHOOL_HOME_URL,
     GURDIAN_HOME_URL,
     TEACHER_HOME_URL,
-    REGISTER_SCHOOL_URL
+    REGISTER_SCHOOL_URL,
+    LOGIN_URL
 } from '../../resources/urls';
 
 
@@ -54,7 +55,7 @@ export const signIn = (user) =>async (dispatch) =>{
 
 export const signOut = () =>async (dispatch) =>{
     dispatch({type: SIGN_OUT});
-    history.push('/Login');
+    history.push(LOGIN_URL);
 };
 
 

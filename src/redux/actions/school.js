@@ -2,18 +2,21 @@ import history from '../../history';
 import {getTokenId} from '../../resources/helper';
 import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
 
-export const registerSchool = (values, googleUser) =>async (dispatch) =>{
+import {
+    REGISTER_SCHOOL
+    
+} from '../../resources/types';
+
+
+
+export const registerSchool = (values) =>async (dispatch) =>{
                         
     let routeUrl = '/';
     const id_token = getTokenId();
-    console.log(values);
-    const {firstName, lastName} = googleUser;
     try{
-        const response = await SchoolToolApi.post('/account/registerschool', {...values,firstName,lastName},
-        getConfigJson(id_token)
-                        );
-        dispatch({type: REGISTER_SCHOOL});
-        console.log(response);
+        const response = await SchoolToolApi.post('/account/registerschool', {...values},
+                            getConfigJson(id_token));
+        dispatch({type: REGISTER_SCHOOL , payload: response.data.value});
     }
     catch (error) {
         if(error.message==='Network Error'){
@@ -25,3 +28,21 @@ export const registerSchool = (values, googleUser) =>async (dispatch) =>{
     }
     history.push(routeUrl);
 };
+
+export const getEvents = () => async (dispatch) =>{
+    let routeUrl = '/';
+    const id_token = getTokenId();
+
+    try{
+
+    }
+    catch(error){
+        if(error.message==='Network Error'){
+            console.log(error.message);
+        }
+        else{
+            console.log(error);
+        }
+    }
+
+}

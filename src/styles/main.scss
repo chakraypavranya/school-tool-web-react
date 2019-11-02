@@ -1,19 +1,9 @@
-@import 'abstruct/variables';
-@import 'abstruct/functions';
-@import 'abstruct/mixins';
+
+
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';
 
 @import 'base/base';
-@import 'base/animations';
-@import 'base/typography';
-@import 'base/utilities';
 
-@import 'components/button';
-@import 'components/card';
-@import 'components/compositions';
-@import 'components/feature-box';
-
-@import 'layout/grid';
-@import 'layout/header';
-
-@import 'pages/home';
-
+@import 'components/fullcalendar';

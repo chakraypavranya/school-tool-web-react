@@ -6,18 +6,20 @@ import {connect} from 'react-redux';
 export class Register extends Component {
 
   render() {
-    const {firstName, lastName, image_Url} = this.props.user;
+    const {firstName, lastName, image_Url} = this.props.googleUser;
     return (
-      <div className="ui container">
-         <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
-        <h2 className="header">Register Your School</h2>
-        <RegistrationForm />
-      </div>
+      <React.Fragment>
+        <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
+        <div className="ui container">
+          <h2 className="header">Register Your School</h2>
+          <RegistrationForm />
+        </div>
+      </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = (state) =>{
-  return{user: state.auth.googleUser}
+  return{googleUser: state.auth.googleUser}
 }
 export default connect(mapStateToProps)(Register)

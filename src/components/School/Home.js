@@ -1,22 +1,50 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
+import FullCalender from '../UI/FullCalender';
 
 export class Home extends Component {
+  
+  handleDateClick = (arg) => {
+    console.log('Day Clicked', arg);
+  }
+
+  handleEventClick = () =>{
+    console.log('On Event Clicked');
+  }
+
+
+  handleAddEventBtnClick = () => {
+    console.log('New Event Clicked');
+  }
+
+
   render() {
-    console.log(this.props);
-    const {firstName, lastName, image_Url} = this.props.user;
+    const {firstName, lastName, image_Url} = this.props.googleUser;
+    
     return (
-      <div>
+      <React.Fragment>
         <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
-        Welcome to School Home Page
-      </div>
+        <div className="ui grid container">
+          
+          <div className="twelve wide column calendar">
+            <FullCalender
+              calendarEvents = {this.props.calendarEvents}
+              handleDateClick = {this.handleDateClick}
+              buttonText = "New Event"
+              handleAddEventBtnClick = {this.handleAddEventBtnClick}
+              handleEventClick = {this.handleEventClick}
+            />
+          </div>
+         
+        </div>
+      </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = (state) =>{
-  return{user: state.auth.googleUser}
+  return{ googleUser: state.auth.googleUser, calendarEvents : state.school.calendarEvents}
 }
 
 export default connect(mapStateToProps)(Home)
