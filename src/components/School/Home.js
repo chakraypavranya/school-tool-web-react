@@ -4,6 +4,7 @@ import Header from './Header';
 
 export class Home extends Component {
   render() {
+    console.log(this.props);
     const {firstName, lastName, image_Url} = this.props.user;
     return (
       <div>
