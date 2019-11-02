@@ -19,7 +19,7 @@ export class RegistrationFormSubmit extends Component {
           <div className="inline fields">
               <label>School Name: </label>
               <div className="field">
-                  <span>{schoolDetails.schoolName}</span>
+                  <span>{schoolDetails.firstName}</span>
               </div>
               <label>Email : </label>
               <div className="field">
@@ -30,7 +30,7 @@ export class RegistrationFormSubmit extends Component {
               <label>License No : </label>
               <div className="field">
                   <span>
-                      { schoolDetails.licenseNo}
+                      { schoolDetails.identificationNumber}
                   </span>
               </div>
           </div>
@@ -62,7 +62,7 @@ export class RegistrationFormSubmit extends Component {
             </div>
             <div className="field">
                 <label>Contact No : </label>
-                <span>{schoolDetails.contactNo}</span>
+                <span>{schoolDetails.phoneNumber}</span>
             </div>
           </div>
         </div>

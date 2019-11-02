@@ -18,7 +18,7 @@ export class RegistrationFormPage2 extends Component {
         <Field name="state" type="text" component={renderField} label="State/Province" />
         <Field name="country" type="text" component={renderField} label="Country" />
         <Field name="pincode" type="text" component={renderField} label="Pin Code" />
-        <Field name="contactNo" type="text" component={renderField} label="Contact No" />
+        <Field name="phoneNumber" type="text" component={renderField} label="Contact No" />
 
         <button type="button" className="ui button secondary" onClick={previousPage}>
           Previous
