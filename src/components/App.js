@@ -16,9 +16,11 @@ import {
     SCHOOL_HOME_URL,
     GURDIAN_HOME_URL,
     TEACHER_HOME_URL,
-    REGISTER_SCHOOL_URL
+    REGISTER_SCHOOL_URL,
+    NEW_EVENT_URL
 } from '../resources/urls';
 import Login from './Login/Login';
+import NewEvent from './School/Event/NewEvent';
 
 const App = () =>{
     return (
@@ -31,6 +33,7 @@ const App = () =>{
                 <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
                 <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>
                 <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/>
+                <ProtectedRoute path={NEW_EVENT_URL} exact component={NewEvent}/>
             </Switch>
         </Router>
     )

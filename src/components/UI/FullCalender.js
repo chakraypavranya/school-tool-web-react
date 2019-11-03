@@ -9,6 +9,7 @@ const FullCalender = (props) => {
   
   return (
     <FullCalendar
+
     defaultView="dayGridMonth"
     customButtons = {RenderCustomButton(buttonText,handleAddEventBtnClick)}
     header={{
@@ -22,6 +23,7 @@ const FullCalender = (props) => {
     dateClick={ handleDateClick }
     weekends='true'
     handleWindowResize = 'true'
+
     />
   )
 }

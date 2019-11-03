@@ -3,15 +3,20 @@ import {getTokenId} from '../../resources/helper';
 import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
 
 import {
-    REGISTER_SCHOOL
+    REGISTER_SCHOOL,
+    GET_SCHOOL_EVENTS
     
 } from '../../resources/types';
 
+import {
+    ROOT_URL,
+    SCHOOL_HOME_URL
+} from '../../resources/urls';
 
 
 export const registerSchool = (values) =>async (dispatch) =>{
                         
-    let routeUrl = '/';
+    let routeUrl = ROOT_URL;
     const id_token = getTokenId();
     try{
         const response = await SchoolToolApi.post('/account/registerschool', {...values},
@@ -29,12 +34,14 @@ export const registerSchool = (values) =>async (dispatch) =>{
     history.push(routeUrl);
 };
 
-export const getEvents = () => async (dispatch) =>{
-    let routeUrl = '/';
+export const getEvents = (id) => async (dispatch) =>{
+    let routeUrl = SCHOOL_HOME_URL;
     const id_token = getTokenId();
 
     try{
-
+        const response = await SchoolToolApi.get(`/school/getevents?schoolID=${id}`, getConfigJson(id_token));
+        dispatch({type: GET_SCHOOL_EVENTS , payload: response.data.values});
+        history.push(routeUrl);
     }
     catch(error){
         if(error.message==='Network Error'){
@@ -44,5 +51,5 @@ export const getEvents = () => async (dispatch) =>{
             console.log(error);
         }
     }
-
+   
 }
