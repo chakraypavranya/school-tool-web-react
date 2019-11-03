@@ -4,7 +4,8 @@ import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
 
 import {
     REGISTER_SCHOOL,
-    GET_SCHOOL_EVENTS
+    GET_SCHOOL_EVENTS,
+    CREATE_EVENT
     
 } from '../../resources/types';
 
@@ -33,6 +34,19 @@ export const registerSchool = (values) =>async (dispatch) =>{
     }
     history.push(routeUrl);
 };
+
+export const createEvent =(values,schoolID) => async (dispatch)=>{
+    let routeUrl = SCHOOL_HOME_URL;
+    
+    const response = await SchoolToolApi.post('/school/addevent', {...values,schoolID},
+                            getConfigJson(getTokenId()));
+    
+    console.log(response);
+    //dispatch({type: CREATE_EVENT, payload: response.data.value});
+    
+    
+    //history.push(routeUrl);
+}
 
 export const getEvents = (id) => async (dispatch) =>{
     let routeUrl = SCHOOL_HOME_URL;

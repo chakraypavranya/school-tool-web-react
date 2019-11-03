@@ -1,4 +1,4 @@
-import {GET_SCHOOL_DETAILS,GET_SCHOOL_EVENTS} from '../../resources/types';
+import {GET_SCHOOL_DETAILS,GET_SCHOOL_EVENTS,CREATE_EVENT} from '../../resources/types';
 
 const INITIAL_STATE = {
     
@@ -24,8 +24,9 @@ export default (state=INITIAL_STATE, action) => {
         case GET_SCHOOL_DETAILS:
             return {...state, school: action.payload}
         case GET_SCHOOL_EVENTS:
-            
             return {...state, calendarEvents: populateFullCalender(action.payload)}
+        case CREATE_EVENT:
+            return {...state}
         default:
             return {...state}
     }

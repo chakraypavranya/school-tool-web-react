@@ -9,6 +9,12 @@ const validate = values => {
   if (!values.description) {
     errors.description = 'Required';
   }
+  if (!values.startDate) {
+    errors.startDate = 'Required';
+  }
+  if (!values.endDate) {
+    errors.endDate = 'Required';
+  }
   if (!values.identificationNumber) {
     errors.identificationNumber = 'Required';
   }

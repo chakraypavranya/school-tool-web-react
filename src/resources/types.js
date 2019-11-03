@@ -3,3 +3,4 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const REGISTER_SCHOOL = 'REGISTER_SCHOOL';
 export const GET_SCHOOL_DETAILS = 'GET_SCHOOL_DETAILS';
 export const GET_SCHOOL_EVENTS = 'GET_SCHOOL_EVENTS';
+export const CREATE_EVENT = 'CREATE_EVENT';

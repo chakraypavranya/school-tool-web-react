@@ -65,7 +65,6 @@ export class Home extends Component {
 }
 
 const mapStateToProps = (state) =>{
-  console.log(state);
   return{ googleUser: state.auth.googleUser, 
           calendarEvents : state.school.calendarEvents,
           schoolId: state.auth.user.id
