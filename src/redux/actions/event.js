@@ -1,0 +1,81 @@
+import history from '../../history';
+import {getTokenId} from '../../resources/helper';
+import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
+
+import {
+    GET_EVENTS,
+    CREATE_EVENT,
+    GET_EVENT_DETAILS
+    
+} from '../../resources/types';
+
+import {
+    SCHOOL_HOME_URL,
+    EDIT_EVENT_URL
+} from '../../resources/urls';
+
+export const createEvent =(values,schoolID) => async (dispatch)=>{
+    let routeUrl = SCHOOL_HOME_URL;
+    
+    const response = await SchoolToolApi.post('/school/addevent', {...values,schoolID},
+                            getConfigJson(getTokenId()));
+    
+    console.log(response);
+    dispatch({type: CREATE_EVENT, payload: response.data.value});
+    
+    
+    history.push(routeUrl);
+}
+
+export const getEvents = (id) => async (dispatch) =>{
+    let routeUrl = SCHOOL_HOME_URL;
+    const id_token = getTokenId();
+
+    try{
+        const response = await SchoolToolApi.get(`/school/getevents?schoolID=${id}`, getConfigJson(getTokenId()));
+        dispatch({type: GET_EVENTS , payload: response.data.values});
+        history.push(routeUrl);
+    }
+    catch(error){
+        if(error.message==='Network Error'){
+            console.log(error.message);
+        }
+        else{
+            console.log(error);
+        }
+    }
+   
+}
+
+export const getEvent =(id) => async (dispatch)=>{
+    let routeUrl = EDIT_EVENT_URL;
+
+    try{
+        const response = await SchoolToolApi.get(`/school/getevent?eventId=${id}`, getConfigJson(getTokenId()));
+        dispatch({type: GET_EVENT_DETAILS , payload: response.data.values});
+        history.push(routeUrl);
+    }
+    catch(error){
+        if(error.message==='Network Error'){
+            console.log(error.message);
+        }
+        else{
+            console.log(error);
+        }
+    }
+    history.push(routeUrl);
+}
+
+export const updateEvent =(values,schoolID) => async (dispatch)=>{
+    let routeUrl = SCHOOL_HOME_URL;
+    console.log(values);
+    
+    // const response = await SchoolToolApi.post('/school/addevent', {...values,schoolID},
+    //                         getConfigJson(getTokenId()));
+    
+    // console.log(response);
+    // dispatch({type: CREATE_EVENT, payload: response.data.value});
+    
+    
+    // history.push(routeUrl);
+}

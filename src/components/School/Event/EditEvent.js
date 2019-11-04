@@ -6,7 +6,7 @@ import Modal from '../../Modal';
 import history from '../../../history';
 import EventForm from './EventForm';
 
-import {createEvent} from '../../../redux/actions/event';
+import {getEvent,updateEvent} from '../../../redux/actions/event';
 
 import {
     SCHOOL_HOME_URL
@@ -14,16 +14,15 @@ import {
 
 
 
-export class NewEvent extends Component {
-
-  onSubmit = (formValues) =>{
-    this.props.createEvent(formValues, this.props.schoolId);
+export class EditEvent extends Component {
+  ronSubmit = (formValues) =>{
+    this.props.updateEvent(formValues, this.props.schoolId);
   }
 
   renderContent(){
 
     return(
-      <EventForm onSubmit={this.onSubmit} isDay={this.props.isDay}/>
+      <EventForm  onSubmit={this.onSubmit} isDay={this.props.isDay}/>
     )
   }
     
@@ -42,7 +41,9 @@ const selector = formValueSelector('newEvent');
 const mapStateToProps = (state) =>{
   const isDay = selector(state, 'isDay');
   const schoolId = state.auth.user.id;
-  return{isDay,schoolId}
+  const event = state.events.event
+  return{isDay,schoolId,event}
 }
 
-export default connect(mapStateToProps,{createEvent})(NewEvent)
+
+export default connect(mapStateToProps,{getEvent,updateEvent})(EditEvent)

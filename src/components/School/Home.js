@@ -5,7 +5,7 @@ import FullCalender from '../UI/FullCalender';
 
 import history from '../../history';
 
-import{getEvents} from '../../redux/actions/school';
+import{getEvents,getEvent} from '../../redux/actions/event';
 
 import {
   NEW_EVENT_URL
@@ -21,8 +21,9 @@ export class Home extends Component {
     console.log('Day Clicked', arg);
   }
 
-  handleEventClick = () =>{
-    console.log('On Event Clicked');
+  handleEventClick = (info) =>{
+    console.log('On Event Clicked', info);
+    this.props.getEvent(info.event.id);
   }
 
 
@@ -66,9 +67,9 @@ export class Home extends Component {
 
 const mapStateToProps = (state) =>{
   return{ googleUser: state.auth.googleUser, 
-          calendarEvents : state.school.calendarEvents,
+          calendarEvents : state.events.calendarEvents,
           schoolId: state.auth.user.id
         }
 }
 
-export default connect(mapStateToProps, {getEvents})(Home)
+export default connect(mapStateToProps, {getEvents,getEvent})(Home)
