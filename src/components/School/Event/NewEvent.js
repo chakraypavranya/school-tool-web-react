@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { formValueSelector  } from 'redux-form';
+import {Link} from 'react-router-dom';
 
 import Modal from '../../Modal';
 import history from '../../../history';
@@ -20,10 +21,21 @@ export class NewEvent extends Component {
     this.props.createEvent(formValues, this.props.schoolId);
   }
 
+
+  renderFormButton = () =>{
+    return(
+      <>
+        <button className="ui button primary">Update</button>
+        <Link to={SCHOOL_HOME_URL} className="ui button">Cancel</Link>
+      </>
+    )
+  }
+
   renderContent(){
 
     return(
-      <EventForm onSubmit={this.onSubmit} isDay={this.props.isDay}/>
+      <EventForm initialValues={{isDay:false}} onSubmit={this.onSubmit} 
+        isDay={this.props.isDay} buttonName='Update' renderFormButton={this.renderFormButton} />
     )
   }
     

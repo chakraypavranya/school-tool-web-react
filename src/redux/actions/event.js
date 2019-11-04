@@ -52,7 +52,7 @@ export const getEvent =(id) => async (dispatch)=>{
 
     try{
         const response = await SchoolToolApi.get(`/school/getevent?eventId=${id}`, getConfigJson(getTokenId()));
-        dispatch({type: GET_EVENT_DETAILS , payload: response.data.values});
+        dispatch({type: GET_EVENT_DETAILS , payload: response.data.value});
         history.push(routeUrl);
     }
     catch(error){

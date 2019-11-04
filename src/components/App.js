@@ -8,7 +8,9 @@ import GurdianHome from './Gurdian/Home';
 import TeacherHome from './Teacher/Home';
 import ProtectedRoute from './ProtectedRoute';
 import Register from './School/Register';
-
+import Login from './Login/Login';
+import NewEvent from './School/Event/NewEvent';
+import EditEvent  from './School/Event/EditEvent';
 import '../styles/main.scss';
 
 import {
@@ -20,9 +22,7 @@ import {
     NEW_EVENT_URL,
     EDIT_EVENT_URL
 } from '../resources/urls';
-import Login from './Login/Login';
-import NewEvent from './School/Event/NewEvent';
-import { EditEvent } from './School/Event/EditEvent';
+
 
 const App = () =>{
     return (
