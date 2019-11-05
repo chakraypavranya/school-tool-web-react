@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
-import validate from './validate';
-import renderField from './renderField';
+import validate from '../../../resources/validate';
+import renderField from '../../../resources/renderField';
 
 export class RegistrationFormPage2 extends Component {
   renderError = ({ meta: { touched, error } }) =>

@@ -9,6 +9,7 @@ import history from '../../../history';
 import EventForm from './EventForm';
 
 import {getEvent,updateEvent} from '../../../redux/actions/event';
+import {convertToHtmlDate} from '../../../resources/helper';
 
 import {
     SCHOOL_HOME_URL
@@ -35,20 +36,17 @@ export class EditEvent extends Component {
     let startDate = _.get(this.props.event, "startDate");
     const endDate =  _.get(this.props.event, "endDate");
 
-    _.set(this.props.event, "startDate", '2019-05-12');
-
-   
-    console.log(startDate,this.props.event);
+   _.set(this.props.event, "startDate", convertToHtmlDate(startDate,'YYYY-MM-DD'));
+   _.set(this.props.event, "endDate", convertToHtmlDate(endDate,'YYYY-MM-DD'));
 
     return(
-      <EventForm initialValues={_.pick(this.props.event,'name','description','isDay','startDate','endDate')} 
+      <EventForm initialValues={_.pick(this.props.event,'name','description','isDay','startDate','endDate','startTime','endTime')} 
           onSubmit={this.onSubmit} isDay={this.props.isDay} renderFormButton={this.renderFormButton}
       />
     )
   }
     
   render() {
-    console.log(this.props);
     return (
         <Modal 
           title="Edit Event" 

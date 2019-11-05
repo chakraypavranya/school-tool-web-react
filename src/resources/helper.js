@@ -15,3 +15,25 @@ export const InitiateGoogleSignIn = () =>{
         });
     });
 }
+
+export const convertToHtmlDate =(dateString, format)=>{
+    const date = new Date(dateString);
+    const day = date.getDate() < 10? '0'+date.getDate(): date.getDate();
+    const month = date.getMonth() < 10? '0'+date.getMonth(): date.getMonth();
+    const year = date.getFullYear();
+
+    switch(format){
+        case 'DD-MM-YYYY':
+            return `${day}-${month}-${year}`;
+            break;
+        case 'MM-DD-YYYY':
+            return `${month}-${day}-${year}`;
+            break;
+        case 'YYYY-MM-DD':
+            return `${year}-${month}-${day}`;
+            break;
+        default:
+            return `${year}-${month}-${day}`;
+            break;
+    }
+}

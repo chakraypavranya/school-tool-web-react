@@ -25,7 +25,7 @@ export class NewEvent extends Component {
   renderFormButton = () =>{
     return(
       <>
-        <button className="ui button primary">Update</button>
+        <button className="ui button primary">Create</button>
         <Link to={SCHOOL_HOME_URL} className="ui button">Cancel</Link>
       </>
     )
@@ -35,7 +35,7 @@ export class NewEvent extends Component {
 
     return(
       <EventForm initialValues={{isDay:false}} onSubmit={this.onSubmit} 
-        isDay={this.props.isDay} buttonName='Update' renderFormButton={this.renderFormButton} />
+        isDay={this.props.isDay} renderFormButton={this.renderFormButton} />
     )
   }
     

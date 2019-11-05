@@ -1,8 +1,8 @@
 import React from 'react';
-import renderField from '../Registration/renderField';
+import renderField from '../../../resources/renderField';
 import { Field, reduxForm  } from 'redux-form';
 
-import validate from '../Registration/validate';
+import validate from '../../../resources/validate';
 
 
 

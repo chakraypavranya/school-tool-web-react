@@ -6,16 +6,34 @@ const INITIAL_STATE = {
 
 const populateFullCalender = (data) =>{
     
-    const event = function(id, title,start,end, allDay , startTime, endTime){
+    const allDayEvent = function(id, title,start,end, allDay){
         this.id = id;
         this.title = title;
-        this.start = allDay? start: new Date(startTime);
-        this.end = allDay? end: new Date(endTime);
+        this.start = start;
+        this.end = start === end ? end : new Date(end).setDate((new Date(end)).getDate()+1);
+        this.allDay = allDay;
+        
+    }
+    
+    const recurringEvent = function(id, title,start,end, allDay , startTime, endTime){
+        this.id = id;
+        this.title = title; 
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.startRecur = start;
+        this.endRecur = end;
         this.allDay = allDay;
     }
 
     return  data.map((e)=>{
-        return new event(e.id, e.name,e.startDate,e.endDate, e.isDay, e.startTime, e.endTime);
+        if(e.isDay){
+            return new allDayEvent(e.id, e.name,e.startDate,e.endDate, e.isDay);
+        }
+        else{
+            const newDate = new Date(e.endDate);
+            const endDate = newDate.setDate(newDate.getDate());
+            return new recurringEvent(e.id, e.name,e.startDate,endDate, e.isDay, e.startTime, e.endTime);
+        }
     });
 
 }
