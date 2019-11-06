@@ -5,7 +5,8 @@ import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
 import {
     GET_EVENTS,
     CREATE_EVENT,
-    GET_EVENT_DETAILS
+    GET_EVENT_DETAILS,
+    UPDATE_EVENT
     
 } from '../../resources/types';
 
@@ -68,14 +69,14 @@ export const getEvent =(id) => async (dispatch)=>{
 
 export const updateEvent =(values,schoolID) => async (dispatch)=>{
     let routeUrl = SCHOOL_HOME_URL;
-    console.log(values);
+    console.log({...values,schoolID});
     
-    // const response = await SchoolToolApi.post('/school/addevent', {...values,schoolID},
-    //                         getConfigJson(getTokenId()));
+    const response = await SchoolToolApi.put('/school/updateevent', {...values,schoolID},
+                            getConfigJson(getTokenId()));
     
-    // console.log(response);
-    // dispatch({type: CREATE_EVENT, payload: response.data.value});
+    console.log(response);
+    dispatch({type: UPDATE_EVENT, payload: response.data.value});
     
     
-    // history.push(routeUrl);
+    history.push(routeUrl);
 }

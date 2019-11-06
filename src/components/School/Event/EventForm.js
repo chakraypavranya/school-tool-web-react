@@ -20,17 +20,18 @@ export class EventForm extends React.Component {
             type="text"
             component={renderField}
             label="Event Name"
+            props={{disabled: this.props.isDisabled}}
           />
-          <Field name="description" type="text" component={renderField} label="Description" />
-          <Field name="startDate" type="date" component={renderField} label="Start Date" />
-          <Field name="endDate" type="date" component={renderField} label="End Date" />
+          <Field name="description" type="text" component={renderField} label="Description" props={{disabled: this.props.isDisabled}} />
+          <Field name="startDate" type="date" component={renderField} label="Start Date" props={{disabled: this.props.isDisabled}} />
+          <Field name="endDate" type="date" component={renderField} label="End Date" props={{disabled: this.props.isDisabled}} />
           { !this.props.isDay && 
             <React.Fragment>
-            <Field name="startTime" type="time" component={renderField} label="Start Time" />
-            <Field name="endTime" type="time" component={renderField} label="End Time" />
+            <Field name="startTime" type="time" component={renderField} label="Start Time" props={{disabled: this.props.isDisabled}} />
+            <Field name="endTime" type="time" component={renderField} label="End Time" props={{disabled: this.props.isDisabled}} />
             </React.Fragment>
           }
-          <Field name="isDay" type="checkbox" component={renderField} label="All Day" />
+          <Field name="isDay" type="checkbox" component={renderField} label="All Day" props={{disabled: this.props.isDisabled}} />
           {
             this.props.renderFormButton()
           }

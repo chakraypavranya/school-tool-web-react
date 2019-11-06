@@ -37,3 +37,17 @@ export const convertToHtmlDate =(dateString, format)=>{
             break;
     }
 }
+
+export const populateEventObj = ({id,startDate,endDate,startTime,endTime,isDay,name,description})=> {
+    const eventObj = {
+        id,
+        startDate,
+        endDate,
+        startTime,
+        endTime,
+        isDay,
+        name,
+        description
+    }
+    return eventObj;
+}

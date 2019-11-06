@@ -10,9 +10,11 @@ export default function Modal(props) {
               <div className="content">
                 {props.content}
               </div>
-              <div className="actions">
-                {props.actions}
-              </div>
+              {props.actions !== undefined &&
+                <div className="actions">
+                  {props.actions}
+                </div>
+              }
           </div>
       </div>,
       document.querySelector("#modal")

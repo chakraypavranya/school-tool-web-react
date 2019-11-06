@@ -9,7 +9,7 @@ import history from '../../../history';
 import EventForm from './EventForm';
 
 import {getEvent,updateEvent} from '../../../redux/actions/event';
-import {convertToHtmlDate} from '../../../resources/helper';
+import {populateEventObj} from '../../../resources/helper';
 
 import {
     SCHOOL_HOME_URL
@@ -20,28 +20,31 @@ import {
 export class EditEvent extends Component {
 
   onSubmit = (formValues) =>{
-    this.props.updateEvent(formValues, this.props.schoolId);
+    const id = this.props.event.id;
+    const event = populateEventObj({...formValues,id});
+    
+    this.props.updateEvent(event, this.props.schoolId);
   }
 
   renderFormButton = () =>{
+    const endDate =  _.get(this.props.event, "endDate");
+    const isDisabled = (new Date(endDate)) < (new Date())?'disabled':'';
+
     return(
       <>
-        <button className="ui button primary">Update</button>
+        <button className={`ui primary button right floated ${isDisabled}`}>Update</button>
         <Link to={SCHOOL_HOME_URL} className="ui button">Cancel</Link>
       </>
     )
   }
 
   renderContent(){
-    let startDate = _.get(this.props.event, "startDate");
     const endDate =  _.get(this.props.event, "endDate");
-
-   _.set(this.props.event, "startDate", convertToHtmlDate(startDate,'YYYY-MM-DD'));
-   _.set(this.props.event, "endDate", convertToHtmlDate(endDate,'YYYY-MM-DD'));
+    const isDisabled = (new Date(endDate)) < (new Date());
 
     return(
       <EventForm initialValues={_.pick(this.props.event,'name','description','isDay','startDate','endDate','startTime','endTime')} 
-          onSubmit={this.onSubmit} isDay={this.props.isDay} renderFormButton={this.renderFormButton}
+          onSubmit={this.onSubmit} isDay={this.props.isDay} renderFormButton={this.renderFormButton} isDisabled={isDisabled}
       />
     )
   }

@@ -25,7 +25,7 @@ export class NewEvent extends Component {
   renderFormButton = () =>{
     return(
       <>
-        <button className="ui button primary">Create</button>
+        <button className="ui primary button right floated">Create</button>
         <Link to={SCHOOL_HOME_URL} className="ui button">Cancel</Link>
       </>
     )

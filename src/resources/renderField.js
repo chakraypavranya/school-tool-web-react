@@ -1,13 +1,13 @@
 import React from 'react';
 
-const renderField = ({ input, label, type, meta }) => {
+const renderField = ({ input, label, type, meta, disabled }) => {
   const className = `field ${meta.error && meta.touched? 'error': ''}`;
 
   if(type==='checkbox'){
     return(
       <div className={className}>
         <div className="ui checkbox">
-          <input  {...input} type={type} />
+          <input  {...input} type={type} disabled={disabled}/>
           <label>{label}</label>
         </div>
       </div>
@@ -17,7 +17,7 @@ const renderField = ({ input, label, type, meta }) => {
     return(
       <div className={className}>
         <label>{label}</label>
-        <input {...input} placeholder={label} type={type} autoComplete="off" />
+        <input {...input} placeholder={label} type={type} autoComplete="off" disabled={disabled} />
           {renderError(meta)}
       </div>
     )
