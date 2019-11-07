@@ -19,5 +19,14 @@ body{
     font-weight: 400;
 }
 
+.fc-content{
+    cursor: pointer;
+}
 
+.pos-absolute{
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%,-50%) !important;
+}
 

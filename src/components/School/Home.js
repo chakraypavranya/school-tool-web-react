@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
 import FullCalender from '../UI/FullCalender';
+import InlineLoader from '../UI/InlineLoader';
 
 import history from '../../history';
 
@@ -11,10 +12,21 @@ import {
   NEW_EVENT_URL
 } from '../../resources/urls';
 
+
 export class Home extends Component {
   
+  state={
+    isLoading: true
+  }
+
   componentDidMount(){
     this.props.getEvents(this.props.schoolId)
+  }
+
+  componentDidUpdate(prevPorps){
+    if(this.props.calendarEvents !== prevPorps.calendarEvents){
+      this.setState({isLoading:false});
+    }
   }
 
   handleDateClick = (arg) => {
@@ -22,13 +34,12 @@ export class Home extends Component {
   }
 
   handleEventClick = (info) =>{
-    console.log('On Event Clicked', info);
+    this.setState({isLoading:true});
     this.props.getEvent(info.event.id);
   }
 
 
   handleAddEventBtnClick = () => {
-    console.log('New Event Clicked');
     history.push(NEW_EVENT_URL)
   }
 
@@ -54,12 +65,13 @@ export class Home extends Component {
       <React.Fragment>
         <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
         <div className="ui grid container">
-          
           <div className="column calendar">
             {this.renderCalender()}
           </div>
-         
         </div>
+        {this.state.isLoading &&
+          <InlineLoader/>
+        }
       </React.Fragment>
     )
   }

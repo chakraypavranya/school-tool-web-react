@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {signIn,signOut} from '../../redux/actions/index';
+import InlineLoader from '../UI/InlineLoader';
 
 export class Landing extends Component {
-  
+
+  state={
+    isLoading: true
+  }
+
   componentDidMount(){
     window.gapi.load('client:auth2',()=>{
         window.gapi.client.init({
@@ -16,6 +21,13 @@ export class Landing extends Component {
         });
     });
   }
+
+  componentDidUpdate(prevPorps){
+    if(this.props.isSignedIn !== prevPorps.isSignedIn){
+      this.setState({isLoading:false});
+    }
+  }
+
 
   onAuthChange = (isSignedIn) =>{
     if(isSignedIn){
@@ -37,7 +49,10 @@ export class Landing extends Component {
 
   render() {
     return (
-      <>     
+      <>
+        {this.state.isLoading &&
+          <InlineLoader/>
+        }     
       </>
     )
   }

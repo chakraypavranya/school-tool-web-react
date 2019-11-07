@@ -1,23 +1,37 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import { Menu } from 'semantic-ui-react'
 import GoogleBtn from '../GoogleBtn';
 import Avater from '../UI/Avater';
 
+import DetailMenu from '../UI/Menu';
+
 export default function Header(props) {
     return (
-        <>
-        <div className="ui secondary pointing menu">
-            <Link to="/school/home" className="item">
+    <>
+        <Menu attached="top">
+        <Menu.Item>
+            <Link to="/school/home">
                 School Tool
             </Link>
-            <a class="browse item">
-                Browse <i class="dropdown icon"></i>
-            </a>
-            <div className="right menu">
-                <Avater {...props} />
-                <GoogleBtn/>
-            </div>
-        </div>
-        </>
+        </Menu.Item>
+
+        <Menu.Item>
+            <DetailMenu/>
+        </Menu.Item>
+
+        <Menu.Menu position='right'>
+          <Menu.Item>
+           <Avater {...props} />
+            
+          </Menu.Item>
+
+          <Menu.Item>
+            <GoogleBtn/>
+          </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+       
+    </>
     )
 }
