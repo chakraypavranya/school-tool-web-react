@@ -11,12 +11,14 @@
 
 html{
     font-size:80.5%;
+    height: 100%;
 }
 
 body{
     box-sizing: border-box;
     font-family: 'Noto Sans SC', sans-serif;
     font-weight: 400;
+    height: 100%;
 }
 
 .fc-content{
@@ -30,3 +32,12 @@ body{
     transform: translate(-50%,-50%) !important;
 }
 
+#root{
+    height: 100%;
+}
+
+
+.ui.vertical.accordion.ui.inverted.menu{
+    width:100%;
+    font-size: 1.5rem;
+}

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import Header from './Header';
+
+import Header from '../Layout/Header';
+import MainLayout from '../Layout/MainLayout';
 import FullCalender from '../UI/FullCalender';
 import InlineLoader from '../UI/InlineLoader';
-
 import history from '../../history';
 
 import{getEvents,getEvent} from '../../redux/actions/event';
@@ -30,7 +31,7 @@ export class Home extends Component {
   }
 
   handleDateClick = (arg) => {
-    console.log('Day Clicked', arg);
+    //console.log('Day Clicked', arg);
   }
 
   handleEventClick = (info) =>{
@@ -63,12 +64,12 @@ export class Home extends Component {
     
     return (
       <React.Fragment>
-        <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
-        <div className="ui grid container">
-          <div className="column calendar">
-            {this.renderCalender()}
+        <MainLayout>
+          <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
+          <div className="ui container calendar">
+              {this.renderCalender()}
           </div>
-        </div>
+        </MainLayout>
         {this.state.isLoading &&
           <InlineLoader/>
         }

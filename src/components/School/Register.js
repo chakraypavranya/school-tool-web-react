@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import RegistrationForm from './Registration/RegistrationForm';
-import Header from './Header';
+import Header from '../Layout/Header';
 import {connect} from 'react-redux';
 
 export class Register extends Component {

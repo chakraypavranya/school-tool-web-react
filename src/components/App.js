@@ -20,7 +20,8 @@ import {
     TEACHER_HOME_URL,
     REGISTER_SCHOOL_URL,
     NEW_EVENT_URL,
-    EDIT_EVENT_URL
+    EDIT_EVENT_URL,
+    LOGIN_URL
 } from '../resources/urls';
 
 
@@ -29,8 +30,8 @@ const App = () =>{
         <Router history={history}>
             <Switch>
                 <Route path={ROOT_URL} exact component={Landing}/>
-                <Route path='/Login' exact component={Login}/>
-                {/* <Route path={REGISTER_SCHOOL_URL} exact component={Register}/> */}
+                <Route path={LOGIN_URL} exact component={Login}/>
+               
                 <ProtectedRoute path={SCHOOL_HOME_URL} exact component={SchoolHome}/>
                 <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
                 <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>

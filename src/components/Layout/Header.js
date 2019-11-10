@@ -4,25 +4,21 @@ import { Menu } from 'semantic-ui-react'
 import GoogleBtn from '../GoogleBtn';
 import Avater from '../UI/Avater';
 
-import DetailMenu from '../UI/Menu';
-
 export default function Header(props) {
     return (
-    <>
-        <Menu attached="top">
+      <>
+      <Menu attached="top">
+        <Menu.Item onClick={props.showSideMenu}>
+            Menu
+        </Menu.Item>
         <Menu.Item>
             <Link to="/school/home">
                 School Tool
             </Link>
         </Menu.Item>
-
-        <Menu.Item>
-            <DetailMenu/>
-        </Menu.Item>
-
         <Menu.Menu position='right'>
           <Menu.Item>
-           <Avater {...props} />
+          <Avater {...props} />
             
           </Menu.Item>
 
@@ -31,7 +27,6 @@ export default function Header(props) {
           </Menu.Item>
         </Menu.Menu>
       </Menu>
-       
     </>
     )
 }

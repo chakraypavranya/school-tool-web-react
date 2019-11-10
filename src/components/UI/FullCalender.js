@@ -10,20 +10,20 @@ const FullCalender = (props) => {
   return (
     <FullCalendar
 
-    defaultView="dayGridMonth"
-    customButtons = {RenderCustomButton(buttonText,handleAddEventBtnClick)}
-    header={{
-      left: 'prev, next today addEventBtn',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-    }}
-    plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
-    events={ calendarEvents }
-    eventClick = {handleEventClick}
-    dateClick={ handleDateClick }
-    weekends='true'
-    handleWindowResize = 'true'
-
+      defaultView="dayGridMonth"
+      customButtons = {RenderCustomButton(buttonText,handleAddEventBtnClick)}
+      header={{
+        left: 'prev, next today addEventBtn',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      }}
+      plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+      events={ calendarEvents }
+      eventClick = {handleEventClick}
+      dateClick={ handleDateClick }
+      weekends='true'
+      handleWindowResize = 'true'
+      height="parent"
     />
   )
 }

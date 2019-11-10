@@ -21,7 +21,7 @@ export const createEvent =(values,schoolID) => async (dispatch)=>{
     const response = await SchoolToolApi.post('/school/addevent', {...values,schoolID},
                             getConfigJson(getTokenId()));
     
-    console.log(response);
+    
     dispatch({type: CREATE_EVENT, payload: response.data.value});
     
     
@@ -69,12 +69,11 @@ export const getEvent =(id) => async (dispatch)=>{
 
 export const updateEvent =(values,schoolID) => async (dispatch)=>{
     let routeUrl = SCHOOL_HOME_URL;
-    console.log({...values,schoolID});
-    
+       
     const response = await SchoolToolApi.put('/school/updateevent', {...values,schoolID},
                             getConfigJson(getTokenId()));
     
-    console.log(response);
+    
     dispatch({type: UPDATE_EVENT, payload: response.data.value});
     
     

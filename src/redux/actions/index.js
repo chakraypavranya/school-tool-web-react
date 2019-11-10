@@ -1,10 +1,13 @@
 import history from '../../history';
 import {SchoolToolApi, getConfigJson}from '../../apis/SchoolTool';
+import {ROLE_TYPE} from '../../resources/roleType';
 
 import {
     SIGN_IN,
     SIGN_OUT
 } from '../../resources/types';
+
+
 
 import {
     ROOT_URL,
@@ -27,13 +30,13 @@ export const signIn = (user) =>async (dispatch) =>{
         if(response.data.value !== null){
             const userRole = response.data.value.userRole;
             switch(userRole){
-                case 1:
+                case ROLE_TYPE.SCHOOL:
                     routeUrl = SCHOOL_HOME_URL;
                     break;
-                case 2:
+                case ROLE_TYPE.GUARDAIN:
                     routeUrl = GURDIAN_HOME_URL;
                     break;
-                case 3:
+                case ROLE_TYPE.TEACHER:
                     routeUrl = TEACHER_HOME_URL;
                     break;
                 default:
