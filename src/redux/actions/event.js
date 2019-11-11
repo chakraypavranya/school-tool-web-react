@@ -35,6 +35,8 @@ export const getEvents = (id) => async (dispatch) =>{
     try{
         const response = await SchoolToolApi.get(`/school/getevents?schoolID=${id}`, getConfigJson(getTokenId()));
         dispatch({type: GET_EVENTS , payload: response.data.values});
+        console.log(response.data.values);
+        
         history.push(routeUrl);
     }
     catch(error){

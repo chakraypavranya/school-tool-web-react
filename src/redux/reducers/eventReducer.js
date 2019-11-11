@@ -6,16 +6,19 @@ const INITIAL_STATE = {
 
 const populateFullCalender = (data) =>{
     
-    const allDayEvent = function(id, title,start,end, allDay){
+    const allDayEvent = function(id, title,start,end, allDay,eventColor){
         this.id = id;
         this.title = title;
         this.start = start;
         this.end = start === end ? end : new Date(end).setDate((new Date(end)).getDate()+1);
         this.allDay = allDay;
+        this.color = eventColor;
+        this.textColor  = 'black'
+
         
     }
     
-    const recurringEvent = function(id, title,start,end, allDay , startTime, endTime){
+    const recurringEvent = function(id, title,start,end, allDay , startTime, endTime,eventColor){
         this.id = id;
         this.title = title; 
         this.startTime = startTime;
@@ -23,16 +26,18 @@ const populateFullCalender = (data) =>{
         this.startRecur = start;
         this.endRecur = end;
         this.allDay = allDay;
+        this.color = eventColor;
+        this.textColor  = 'black'
     }
 
     return  data.map((e)=>{
         if(e.isDay){
-            return new allDayEvent(e.id, e.name,e.startDate,e.endDate, e.isDay);
+            return new allDayEvent(e.id, e.name,e.startDate,e.endDate, e.isDay,e.eventColor);
         }
         else{
             const newDate = new Date(e.endDate);
             const endDate = newDate.setDate(newDate.getDate());
-            return new recurringEvent(e.id, e.name,e.startDate,endDate, e.isDay, e.startTime, e.endTime);
+            return new recurringEvent(e.id, e.name,e.startDate,endDate, e.isDay, e.startTime, e.endTime,e.eventColor);
         }
     });
 

@@ -15,10 +15,13 @@ export class ProtectedRoute extends Component {
                     if(this.props.isSignedIn && pathArr[1] === 'school' && userRole === ROLE_TYPE.SCHOOL){
                         return <Component {...this.props}/>
                     }
-                    if(this.props.isSignedIn && pathArr[1] === 'guardian' && userRole === ROLE_TYPE.GUARDAIN){
+                    else if(this.props.isSignedIn && pathArr[1] === 'guardian' && userRole === ROLE_TYPE.GUARDAIN){
                         return <Component {...this.props}/>
                     }
-                    if(this.props.isSignedIn && pathArr[1] === 'teacher' && userRole === ROLE_TYPE.TEACHER ){
+                    else if(this.props.isSignedIn && pathArr[1] === 'teacher' && userRole === ROLE_TYPE.TEACHER ){
+                        return <Component {...this.props}/>
+                    }
+                    else if(this.props.isSignedIn){
                         return <Component {...this.props}/>
                     }
                     else{

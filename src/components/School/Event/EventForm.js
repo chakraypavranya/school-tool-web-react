@@ -1,12 +1,10 @@
 import React from 'react';
 import renderField from '../../../resources/renderField';
 import { Field, reduxForm  } from 'redux-form';
-
 import validate from '../../../resources/validate';
 
-
-
 export class EventForm extends React.Component {
+
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   }
@@ -23,6 +21,7 @@ export class EventForm extends React.Component {
             props={{disabled: this.props.isDisabled}}
           />
           <Field name="description" type="text" component={renderField} label="Description" props={{disabled: this.props.isDisabled}} />
+         
           <Field name="startDate" type="date" component={renderField} label="Start Date" props={{disabled: this.props.isDisabled}} />
           <Field name="endDate" type="date" component={renderField} label="End Date" props={{disabled: this.props.isDisabled}} />
           { !this.props.isDay && 

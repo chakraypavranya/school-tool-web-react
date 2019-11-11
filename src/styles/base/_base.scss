@@ -41,3 +41,31 @@ body{
     width:100%;
     font-size: 1.5rem;
 }
+
+.fc-list-item:hover{
+    cursor: pointer;
+}
+
+.holiday{
+    background-color: $color-label-holiday !important;
+}
+
+.exam{
+    background-color: $color-label-exam !important;
+}
+
+.sports{
+    background-color: $color-label-sports !important;
+}
+
+.social{
+    background-color: $color-label-social !important;
+}
+
+.cultural{
+    background-color: $color-label-cultural !important;
+}
+
+.others{
+    background-color: $color-label-others !important;
+}

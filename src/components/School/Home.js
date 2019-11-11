@@ -48,13 +48,24 @@ export class Home extends Component {
   renderCalender(){
     if(this.props.calendarEvents){
       return(
-        <FullCalender
+        <React.Fragment>
+            <div className="ui row" style={{marginBottom:'20px'}}>
+              <span className="ui tag holiday label">Holiday</span>
+              <span className="ui tag exam    label">Exam</span>
+              <span className="ui tag sports  label">Sport</span>
+              <span className="ui tag social  label">Social</span>
+              <span className="ui tag cultural label">Cutural</span>
+              <span className="ui tag others  label">Others</span>
+            </div>
+            <FullCalender
               calendarEvents = {this.props.calendarEvents}
               handleDateClick = {this.handleDateClick}
               buttonText = "New Event"
               handleAddEventBtnClick = {this.handleAddEventBtnClick}
               handleEventClick = {this.handleEventClick}
-        />
+            />
+        </React.Fragment>
+        
       )
     }
   }
@@ -67,6 +78,7 @@ export class Home extends Component {
         <MainLayout>
           <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
           <div className="ui container calendar">
+              
               {this.renderCalender()}
           </div>
         </MainLayout>
