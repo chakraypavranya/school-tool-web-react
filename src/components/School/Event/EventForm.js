@@ -1,18 +1,29 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import renderField from '../../../resources/renderField';
 import { Field, reduxForm  } from 'redux-form';
 import validate from '../../../resources/validate';
 
+import {getEventTypes} from '../../../redux/actions/event';
+
 export class EventForm extends React.Component {
+
+  componentDidMount(){
+    this.props.getEventTypes();
+  }
 
   onSubmit = (formValues) => {
     this.props.onSubmit(formValues);
   }
 
   render(){
+    console.log(this.props.eventTypes);
     return (
       <form className="ui form error" onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <div className="ui segment">
+          <Field name="eventTypeId" type="select" component={renderField} 
+              label="Event Type" props={{disabled: this.props.isDisabled},{options:this.props.eventTypes}} />
+           
           <Field
             name="name"
             type="text"
@@ -40,7 +51,15 @@ export class EventForm extends React.Component {
   }
 }
 
-export default reduxForm({
+const mapStateToProps = (state) =>{
+  const eventTypes = state.events !== undefined? state.events.eventTypes: null;
+  return {eventTypes}
+}
+
+
+const eventForm =  reduxForm({
   form: 'newEvent',
   validate
 })(EventForm)
+
+export default connect(mapStateToProps,{getEventTypes})(eventForm)

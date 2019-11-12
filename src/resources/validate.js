@@ -1,5 +1,9 @@
 const validate = values => {
   const errors = {};
+
+  if (!values.eventTypeId) {
+    errors.eventTypeId = 'Required';
+  }
   if (!values.firstName) {
     errors.firstName = 'Required';
   }

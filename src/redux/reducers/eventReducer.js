@@ -1,4 +1,4 @@
-import {GET_EVENTS,CREATE_EVENT,GET_EVENT_DETAILS,UPDATE_EVENT,DELETE_EVENT} from '../../resources/types';
+import {GET_EVENTS,CREATE_EVENT,GET_EVENT_DETAILS,UPDATE_EVENT,GET_EVENT_TYPES } from '../../resources/types';
 
 const INITIAL_STATE = {
     
@@ -53,8 +53,8 @@ export default (state=INITIAL_STATE, action) => {
             return {...state}
         case UPDATE_EVENT:
             return {...state}
-        case DELETE_EVENT:
-            return {...state}
+        case GET_EVENT_TYPES:
+            return {...state , eventTypes: action.payload}
         default:
             return {...state}
     }

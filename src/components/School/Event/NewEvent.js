@@ -54,6 +54,8 @@ const selector = formValueSelector('newEvent');
 const mapStateToProps = (state) =>{
   const isDay = selector(state, 'isDay');
   const schoolId = state.auth.user.id;
+
+ 
   return{isDay,schoolId}
 }
 

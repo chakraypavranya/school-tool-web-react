@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderField = ({ input, label, type, meta, disabled }) => {
+const renderField = ({ input, label, type, meta, disabled, options }) => {
   const className = `field ${meta.error && meta.touched? 'error': ''}`;
 
   if(type==='checkbox'){
@@ -10,6 +10,23 @@ const renderField = ({ input, label, type, meta, disabled }) => {
           <input  {...input} type={type} disabled={disabled}/>
           <label>{label}</label>
         </div>
+      </div>
+    )
+  }
+  else if(type==='select'){
+    return(
+      <div className={className}>
+        <label>{label}</label>
+        <select {...input} class="ui fluid dropdown" disabled={disabled}>
+          <option>Select</option>
+          {
+           options &&
+           options.map((type) =>{
+              return (<option value={type.id}>{type.name}</option>)
+            })
+          }
+        </select>
+        {renderError(meta)}
       </div>
     )
   }

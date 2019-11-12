@@ -43,7 +43,7 @@ export class EditEvent extends Component {
     const isDisabled = (new Date(endDate)) < (new Date());
 
     return(
-      <EventForm initialValues={_.pick(this.props.event,'name','description','isDay','startDate','endDate','startTime','endTime')} 
+      <EventForm initialValues={_.pick(this.props.event,'name','description','isDay','startDate','endDate','startTime','endTime', 'eventTypeId')} 
           onSubmit={this.onSubmit} isDay={this.props.isDay} renderFormButton={this.renderFormButton} isDisabled={isDisabled}
       />
     )

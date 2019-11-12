@@ -6,7 +6,8 @@ import {
     GET_EVENTS,
     CREATE_EVENT,
     GET_EVENT_DETAILS,
-    UPDATE_EVENT
+    UPDATE_EVENT,
+    GET_EVENT_TYPES
     
 } from '../../resources/types';
 
@@ -14,6 +15,13 @@ import {
     SCHOOL_HOME_URL,
     EDIT_EVENT_URL
 } from '../../resources/urls';
+
+export const getEventTypes = () => async(dispatch)=>{
+    const response = await SchoolToolApi.get('/school/geteventtypes',
+    getConfigJson(getTokenId()));
+
+    dispatch({type: GET_EVENT_TYPES, payload: response.data.values});
+}
 
 export const createEvent =(values,schoolID) => async (dispatch)=>{
     let routeUrl = SCHOOL_HOME_URL;

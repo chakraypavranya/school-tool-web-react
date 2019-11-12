@@ -49,13 +49,13 @@ export class Home extends Component {
     if(this.props.calendarEvents){
       return(
         <React.Fragment>
-            <div className="ui row" style={{marginBottom:'20px'}}>
-              <span className="ui tag holiday label">Holiday</span>
-              <span className="ui tag exam    label">Exam</span>
-              <span className="ui tag sports  label">Sport</span>
-              <span className="ui tag social  label">Social</span>
-              <span className="ui tag cultural label">Cutural</span>
-              <span className="ui tag others  label">Others</span>
+            <div className="ui row">
+              <span className="ui tag holiday label u-margin-right-small u-margin-bottom-small">Holiday</span>
+              <span className="ui tag exam    label u-margin-right-small u-margin-bottom-small">Exam</span>
+              <span className="ui tag sports  label u-margin-right-small u-margin-bottom-small">Sport</span>
+              <span className="ui tag social  label u-margin-right-small u-margin-bottom-small">Social</span>
+              <span className="ui tag cultural label u-margin-right-small u-margin-bottom-small">Cutural</span>
+              <span className="ui tag others  label u-margin-right-small u-margin-bottom-small">Others</span>
             </div>
             <FullCalender
               calendarEvents = {this.props.calendarEvents}

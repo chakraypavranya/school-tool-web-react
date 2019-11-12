@@ -4,7 +4,6 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
-import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 const FullCalender = (props) => {
   const {calendarEvents, handleDateClick, buttonText , handleAddEventBtnClick, handleEventClick} = props;
@@ -19,7 +18,7 @@ const FullCalender = (props) => {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       }}
-      plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ,bootstrapPlugin ]}
+      plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin ]}
       events={ calendarEvents }
       eventClick = {handleEventClick}
       dateClick={ handleDateClick }

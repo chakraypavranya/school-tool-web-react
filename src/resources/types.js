@@ -2,6 +2,8 @@ export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 export const REGISTER_SCHOOL = 'REGISTER_SCHOOL';
 export const GET_SCHOOL_DETAILS = 'GET_SCHOOL_DETAILS';
+
+export const GET_EVENT_TYPES= 'GET_EVENT_TYPES';
 export const GET_EVENTS = 'GET_EVENTS';
 export const GET_EVENT_DETAILS = 'GET_EVENT_DETAILS';
 export const CREATE_EVENT = 'CREATE_EVENT';
