@@ -3,9 +3,7 @@ import {connect} from 'react-redux';
 
 import Header from '../Layout/Header';
 import MainLayout from '../Layout/MainLayout';
-import FullCalender from '../UI/FullCalender';
 import InlineLoader from '../UI/InlineLoader';
-import history from '../../history';
 
 import{getGuardians} from '../../redux/actions/guardian';
 

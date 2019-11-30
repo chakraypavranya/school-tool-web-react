@@ -5,48 +5,41 @@ export function  GuardianTable (props){
 
     console.log(props.value);
 
-    const [state, setState] = React.useState({
-        columns: [
-          { title: 'First Name', field: 'firstName' },
-          { title: 'Last Name', field: 'lastName' },
-          { title: 'Email', field: 'emailID' },
-        ],
-        data: props.value
-      });
-    
+    const columns = [
+      { title: 'First Name', field: 'firstName' },
+      { title: 'Last Name', field: 'lastName' },
+      { title: 'Email', field: 'emailID' },
+      {
+        title: 'Action',
+        render: rowData => 
+          {
+            return(
+            <>
+              <div className="ui buttons">
+                <button className="ui button" onClick={()=>console.log(rowData.authenticatedUserID)}>View</button>
+                <div className="or"></div>
+                <button className="ui green button" onClick={()=>console.log(rowData.authenticatedUserID)}>Edit</button>
+                <div className="or"></div>
+                <button className="ui red button" onClick={()=>console.log(rowData.authenticatedUserID)}>Delete</button>
+              </div>
+              
+            </>
+            )
+          } 
+      }
+    ]
+
+    const data = props.value
+
       return (
         <MaterialTable
           title="Guardian Details"
-          columns={state.columns}
-          data={state.data}
-          editable={{
-            onRowUpdate: (newData, oldData) =>
-              new Promise(resolve => {
-                setTimeout(() => {
-                  resolve();
-                  if (oldData) {
-                    setState(prevState => {
-                      const data = [...prevState.data];
-                      data[data.indexOf(oldData)] = newData;
-                      return { ...prevState, data };
-                    });
-                  }
-                }, 600);
-              }),
-            onRowDelete: oldData =>
-              new Promise(resolve => {
-                setTimeout(() => {
-                  resolve();
-                  setState(prevState => {
-                    const data = [...prevState.data];
-                    data.splice(data.indexOf(oldData), 1);
-                    return { ...prevState, data };
-                  });
-                }, 600);
-              }),
-          }}
+          columns={columns}
+          data={data}
         />
       );
+
+      
 }
 
 export default GuardianTable

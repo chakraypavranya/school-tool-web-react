@@ -7,14 +7,9 @@ import Avater from '../UI/Avater';
 export default function Header(props) {
     return (
       <>
-      <Menu attached="top">
+      <Menu attached="top" className="ui secondary  menu">
         <Menu.Item onClick={props.showSideMenu}>
             Menu
-        </Menu.Item>
-        <Menu.Item>
-            <Link to="/school/home">
-                School Tool
-            </Link>
         </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>

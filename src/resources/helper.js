@@ -53,5 +53,5 @@ export const populateEventObj = ({id,startDate,endDate,startTime,endTime,isDay,n
 }
 
 export const StudentMenuItems = ['new','update'];
-export const GuardianMenuItems = ['new','update'];
+export const GuardianMenuItems = ['newGurdian','updateGurdian'];
 export const TeacherMenuItems = ['new','update'];

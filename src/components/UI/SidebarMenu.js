@@ -22,55 +22,56 @@ export default class SidebarMenu extends Component {
 
   StudentMenu (activeItem){
     return (
-        StudentMenuItems.map((item)=>{
-        return (
-            <>
-                <Menu.Item
-                name={item}
-                active={activeItem === item}
-                onClick={this.handleItemClick}
-                />
-            </>
-        )})
-    )
-  }
-
-  GuardianMenu (activeItem){
-    return (
-       
       <>
-          <Menu.Item
-          active={activeItem === 'New'}
-          onClick={this.handleItemClick}
-          >
-            <Link to={SCHOOL_GUARDIAN_NEW_URL}>
-              New
-            </Link>
-          </Menu.Item>
-          <Menu.Item
-          active={activeItem === 'Update'}
-          onClick={this.handleItemClick}
-          >
-            <Link to={SCHOOL_GUARDIAN_URL}>
-              Update
-            </Link>
-          </Menu.Item>
+        <div className="menu">
+          <Link className="item" to="/">
+            New
+          </Link>
+        </div>  
+        
+        <div className="menu">
+          <Link className="item" to="/">
+            Update
+          </Link>
+        </div>
       </>
     )
   }
 
-  TeacherMenu (activeItem){
+  GuardianMenu (){
     return (
-        TeacherMenuItems.map((item)=>{
-        return (
-            <>
-                <Menu.Item
-                name={item}
-                active={activeItem === item}
-                onClick={this.handleItemClick}
-                />
-            </>
-        )})
+      <>
+        <div className="menu">
+          <Link className="item" to={SCHOOL_GUARDIAN_URL}>
+            All
+          </Link>
+        </div>
+        <div className="menu">
+          <Link className="item" to={SCHOOL_GUARDIAN_NEW_URL}>
+            Add New
+          </Link>
+        </div>  
+        
+        
+      </>
+    )
+  }
+
+  TeacherMenu (){
+    return (
+      <>
+        <div className="menu">
+          <Link className="item" to="/">
+            New
+          </Link>
+        </div>  
+        
+        <div className="menu">
+          <Link className="item" to="/">
+            Update
+          </Link>
+        </div>
+      </>
     )
   }
 
@@ -79,34 +80,41 @@ export default class SidebarMenu extends Component {
 
     return (
       <Accordion as={Menu} vertical inverted >
+        
         <Menu.Item key="1">
-          <Accordion.Title
-            key="0"
-            active={activeIndex === 0}
-            content='Student'
-            index={0}
-            onClick={this.handleClick}
-          />
-          <Accordion.Content key="1" active={activeIndex === 0} content={this.StudentMenu(activeItem)} />
+          <Link to="/" >
+            <Accordion.Title content='Home' key="0" active={activeIndex === 0} />
+          </Link>
         </Menu.Item>
 
         <Menu.Item key="2">
-          <Accordion.Title key="1"
+          <Accordion.Title
+            key="1"
             active={activeIndex === 1}
-            content='Teacher'
+            content='Student'
             index={1}
             onClick={this.handleClick}
           />
-          <Accordion.Content key="2" active={activeIndex === 1} content={this.TeacherMenu(activeItem)} />
+          <Accordion.Content key="2" active={activeIndex === 1} content={this.StudentMenu(activeItem)} />
         </Menu.Item>
+
         <Menu.Item key="3">
           <Accordion.Title key="2"
             active={activeIndex === 2}
-            content='Guardain'
+            content='Teacher'
             index={2}
             onClick={this.handleClick}
           />
-          <Accordion.Content key="3" active={activeIndex === 2} content={this.GuardianMenu(activeItem)} />
+          <Accordion.Content key="3" active={activeIndex === 2} content={this.TeacherMenu(activeItem)} />
+        </Menu.Item>
+        <Menu.Item key="4">
+          <Accordion.Title key="3"
+            active={activeIndex === 3}
+            content='Guardain'
+            index={3}
+            onClick={this.handleClick}
+          />
+          <Accordion.Content key="4" active={activeIndex === 3} content={this.GuardianMenu(activeItem)} />
         </Menu.Item>
       </Accordion>
     )
