@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import { Accordion, Menu } from 'semantic-ui-react';
 import {StudentMenuItems,GuardianMenuItems,TeacherMenuItems} from '../../resources/helper';
+import { SCHOOL_GUARDIAN_NEW_URL, SCHOOL_GUARDIAN_URL } from '../../resources/urls';
 
 
 
@@ -35,16 +37,25 @@ export default class SidebarMenu extends Component {
 
   GuardianMenu (activeItem){
     return (
-        GuardianMenuItems.map((item)=>{
-        return (
-            <>
-                <Menu.Item
-                name={item}
-                active={activeItem === item}
-                onClick={this.handleItemClick}
-                />
-            </>
-        )})
+       
+      <>
+          <Menu.Item
+          active={activeItem === 'New'}
+          onClick={this.handleItemClick}
+          >
+            <Link to={SCHOOL_GUARDIAN_NEW_URL}>
+              New
+            </Link>
+          </Menu.Item>
+          <Menu.Item
+          active={activeItem === 'Update'}
+          onClick={this.handleItemClick}
+          >
+            <Link to={SCHOOL_GUARDIAN_URL}>
+              Update
+            </Link>
+          </Menu.Item>
+      </>
     )
   }
 
