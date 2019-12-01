@@ -3,6 +3,15 @@ import {connect} from 'react-redux';
 import {Route, Redirect} from 'react-router-dom';
 import {ROLE_TYPE} from '../resources/roleType';
 
+import {
+    ROOT_URL,
+    SCHOOL_HOME_URL,
+    GURDIAN_HOME_URL,
+    TEACHER_HOME_URL,
+    REGISTER_SCHOOL_URL,
+    LOGIN_URL
+} from '../resources/urls';
+
 export class ProtectedRoute extends Component {
     render() {
         const {component: Component, path, userRole, ...rest} = this.props;
@@ -11,7 +20,6 @@ export class ProtectedRoute extends Component {
         return (
             <Route {...rest} render={(props)=>
                 {
-                    
                     if(this.props.isSignedIn && pathArr[1] === 'school' && userRole === ROLE_TYPE.SCHOOL){
                         return <Component {...this.props}/>
                     }
@@ -25,7 +33,7 @@ export class ProtectedRoute extends Component {
                         return <Component {...this.props}/>
                     }
                     else{
-                        return <Redirect to="/"/>
+                        return <Redirect to={ROOT_URL}/>
                     }
                }
             }/>

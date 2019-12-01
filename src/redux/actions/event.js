@@ -44,8 +44,6 @@ export const getEvents = (id) => async (dispatch) =>{
         const response = await SchoolToolApi.get(`/school/getevents?schoolID=${id}`, getConfigJson(getTokenId()));
         dispatch({type: GET_EVENTS , payload: response.data.values});
         console.log(response.data.values);
-        
-        history.push(routeUrl);
     }
     catch(error){
         if(error.message==='Network Error'){
@@ -55,7 +53,7 @@ export const getEvents = (id) => async (dispatch) =>{
             console.log(error);
         }
     }
-   
+    history.push(routeUrl);
 }
 
 export const getEvent =(id) => async (dispatch)=>{

@@ -78,7 +78,6 @@ export class Home extends Component {
         <MainLayout>
           <Header firstName={firstName} lastName={lastName} image_Url={image_Url}/>
           <div className="ui container calendar">
-              
               {this.renderCalender()}
           </div>
         </MainLayout>

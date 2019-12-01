@@ -39,13 +39,18 @@ const App = () =>{
                 <Route path={LOGIN_URL} exact component={Login}/>
                
                 <ProtectedRoute path={SCHOOL_HOME_URL} exact component={SchoolHome}/>
-                <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
-                <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>
-                <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/>
-                <ProtectedRoute path={NEW_EVENT_URL} exact component={NewEvent}/>
-                <ProtectedRoute path={EDIT_EVENT_URL} exact component={EditEvent}/>
                 <ProtectedRoute path={SCHOOL_GUARDIAN_NEW_URL} exact component={GuardianRegister}/>
                 <ProtectedRoute path={SCHOOL_GUARDIAN_URL} exact component={Guardian}/>
+                <ProtectedRoute path={NEW_EVENT_URL} exact component={NewEvent}/>
+                <ProtectedRoute path={EDIT_EVENT_URL} exact component={EditEvent}/>
+
+
+                <ProtectedRoute path={GURDIAN_HOME_URL} exact component={GurdianHome}/>
+                <ProtectedRoute path={TEACHER_HOME_URL} exact component={TeacherHome}/>
+
+                <ProtectedRoute path={REGISTER_SCHOOL_URL} exact component={Register}/>
+                
+                
             </Switch>
         </Router>
     )
